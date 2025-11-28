@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: tuf-tracker-backend
+    env: node
+    region: oregon
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 5001
+      # You'll need to add these in Render dashboard:
+      # - GEMINI_API_KEY
+      # - FIREBASE_PROJECT_ID  
+      # - FIREBASE_PRIVATE_KEY
+      # - FIREBASE_CLIENT_EMAIL
