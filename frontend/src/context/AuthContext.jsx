@@ -24,32 +24,37 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
       if (firebaseUser) {
-        // Check if user document exists, create if not
-        const userRef = doc(db, 'users', firebaseUser.uid);
-        const userSnap = await getDoc(userRef);
+        try {
+          // Check if user document exists, create if not
+          const userRef = doc(db, 'users', firebaseUser.uid);
+          const userSnap = await getDoc(userRef);
 
-        if (!userSnap.exists()) {
-          // Create new user document
-          await setDoc(userRef, {
-            uid: firebaseUser.uid,
-            email: firebaseUser.email,
-            displayName: firebaseUser.displayName,
-            photoURL: firebaseUser.photoURL,
-            createdAt: new Date(),
-            settings: {
-              timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
-              notificationPreferences: {
-                email: false,
-                push: false,
+          if (!userSnap.exists()) {
+            // Create new user document
+            await setDoc(userRef, {
+              uid: firebaseUser.uid,
+              email: firebaseUser.email,
+              displayName: firebaseUser.displayName,
+              photoURL: firebaseUser.photoURL,
+              createdAt: new Date(),
+              settings: {
+                timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+                notificationPreferences: {
+                  email: false,
+                  push: false,
+                },
+                revisionIntervals: [1, 3, 7, 14, 30],
               },
-              revisionIntervals: [1, 3, 7, 14, 30],
-            },
-            stats: {
-              totalProblems: 0,
-              currentStreak: 0,
-              longestStreak: 0,
-            },
-          });
+              stats: {
+                totalProblems: 0,
+                currentStreak: 0,
+                longestStreak: 0,
+              },
+            });
+          }
+        } catch (error) {
+          console.error("Error fetching/creating user profile (likely blocked):", error);
+          // Proceed with login even if Firestore fails
         }
 
         setUser(firebaseUser);
