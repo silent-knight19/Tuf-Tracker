@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Loader2, Sparkles, Check, AlertCircle } from 'lucide-react';
+import { Loader2, Sparkles, Check, AlertCircle, Target } from 'lucide-react';
 import { collection, addDoc, serverTimestamp, doc, updateDoc, increment } from 'firebase/firestore';
 import { db } from '../../utils/firebaseConfig';
 import { useAuth } from '../../context/AuthContext';
@@ -126,12 +126,12 @@ export default function ProblemEntryForm({ onSuccess }) {
         <motion.div
           animate={{ rotate: 360 }}
           transition={{ duration: 2, repeat: Infinity, ease: 'linear' }}
-          className="mb-6"
+          className="mb-6 bg-primary-500/10 p-4 rounded-full"
         >
-          <Sparkles className="w-16 h-16 text-primary-400" />
+          <Sparkles className="w-12 h-12 text-primary-400" />
         </motion.div>
-        <h3 className="text-2xl font-semibold mb-2">AI is analyzing your problem...</h3>
-        <p className="text-gray-400">This may take a few seconds</p>
+        <h3 className="text-2xl font-bold text-dark-100 mb-2">AI is analyzing your problem...</h3>
+        <p className="text-dark-400">This may take a few seconds</p>
       </div>
     );
   }
@@ -143,13 +143,13 @@ export default function ProblemEntryForm({ onSuccess }) {
         animate={{ opacity: 1, scale: 1 }}
         className="space-y-6"
       >
-        <div className="flex items-center gap-3 mb-6">
-          <div className="bg-green-500/20 p-2 rounded-full">
-            <Check className="w-6 h-6 text-green-400" />
+        <div className="flex items-center gap-4 mb-8 bg-accent-mint/10 p-4 rounded-xl border border-accent-mint/20">
+          <div className="bg-accent-mint/20 p-2 rounded-full">
+            <Check className="w-6 h-6 text-accent-mint" />
           </div>
           <div>
-            <h3 className="text-2xl font-semibold">Analysis Complete!</h3>
-            <p className="text-gray-400">Problem saved to your tracker</p>
+            <h3 className="text-xl font-bold text-dark-100">Analysis Complete!</h3>
+            <p className="text-dark-400 text-sm">Problem saved to your tracker</p>
           </div>
         </div>
 
@@ -169,31 +169,41 @@ export default function ProblemEntryForm({ onSuccess }) {
         </div>
 
         {aiAnalysis.keyTakeaways?.length > 0 && (
-          <div className="glass-card p-4">
-            <h4 className="font-semibold mb-2 text-primary-400">Key Takeaways</h4>
-            <ul className="space-y-1">
+          <div className="glass-card p-5">
+            <h4 className="font-semibold mb-3 text-primary-400 flex items-center gap-2">
+              <Sparkles size={16} /> Key Takeaways
+            </h4>
+            <ul className="space-y-2">
               {aiAnalysis.keyTakeaways.map((takeaway, idx) => (
-                <li key={idx} className="text-sm text-gray-300">• {takeaway}</li>
+                <li key={idx} className="text-sm text-dark-200 flex items-start gap-2">
+                  <span className="mt-1.5 w-1 h-1 rounded-full bg-primary-400 flex-shrink-0" />
+                  {takeaway}
+                </li>
               ))}
             </ul>
           </div>
         )}
 
         {aiAnalysis.improvementSuggestions?.length > 0 && (
-          <div className="glass-card p-4">
-            <h4 className="font-semibold mb-2 text-purple-400">Improvement Suggestions</h4>
-            <ul className="space-y-1">
+          <div className="glass-card p-5">
+            <h4 className="font-semibold mb-3 text-accent-purple flex items-center gap-2">
+              <Target size={16} /> Improvement Suggestions
+            </h4>
+            <ul className="space-y-2">
               {aiAnalysis.improvementSuggestions.map((suggestion, idx) => (
-                <li key={idx} className="text-sm text-gray-300">• {suggestion}</li>
+                <li key={idx} className="text-sm text-dark-200 flex items-start gap-2">
+                  <span className="mt-1.5 w-1 h-1 rounded-full bg-accent-purple flex-shrink-0" />
+                  {suggestion}
+                </li>
               ))}
             </ul>
           </div>
         )}
 
         {aiAnalysis.revisionHint && (
-          <div className="glass-card p-4 border-l-4 border-primary-500">
-            <h4 className="font-semibold mb-2">💡 Revision Hint</h4>
-            <p className="text-sm text-gray-300">{aiAnalysis.revisionHint}</p>
+          <div className="glass-card p-5 border-l-4 border-primary-500 bg-primary-500/5">
+            <h4 className="font-semibold mb-2 text-dark-100">💡 Revision Hint</h4>
+            <p className="text-sm text-dark-300 leading-relaxed">{aiAnalysis.revisionHint}</p>
           </div>
         )}
       </motion.div>
@@ -203,8 +213,8 @@ export default function ProblemEntryForm({ onSuccess }) {
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
       <div>
-        <label className="block text-sm font-medium mb-2">
-          Problem Title <span className="text-red-400">*</span>
+        <label className="block text-sm font-medium text-dark-200 mb-2">
+          Problem Title <span className="text-accent-rose">*</span>
         </label>
         <input
           type="text"
@@ -219,7 +229,7 @@ export default function ProblemEntryForm({ onSuccess }) {
       </div>
 
       <div>
-        <label className="block text-sm font-medium mb-2">Problem URL</label>
+        <label className="block text-sm font-medium text-dark-200 mb-2">Problem URL</label>
         <input
           type="url"
           name="url"
@@ -232,8 +242,8 @@ export default function ProblemEntryForm({ onSuccess }) {
       </div>
 
       <div>
-        <label className="block text-sm font-medium mb-2">
-          Problem Description <span className="text-red-400">*</span>
+        <label className="block text-sm font-medium text-dark-200 mb-2">
+          Problem Description <span className="text-accent-rose">*</span>
         </label>
         <textarea
           name="description"
@@ -247,7 +257,7 @@ export default function ProblemEntryForm({ onSuccess }) {
       </div>
 
       <div>
-        <label className="block text-sm font-medium mb-2">Your Notes & Approach</label>
+        <label className="block text-sm font-medium text-dark-200 mb-2">Your Notes & Approach</label>
         <textarea
           name="userNotes"
           value={formData.userNotes}
@@ -259,27 +269,34 @@ export default function ProblemEntryForm({ onSuccess }) {
       </div>
 
       <div>
-        <label className="block text-sm font-medium mb-2">
+        <label className="block text-sm font-medium text-dark-200 mb-2">
           Difficulty (Optional - AI will suggest)
         </label>
-        <select
-          name="difficulty"
-          value={formData.difficulty}
-          onChange={handleChange}
-          className="input-field"
-          disabled={loading}
-        >
-          <option value="">Let AI decide</option>
-          <option value="Easy">Easy</option>
-          <option value="Medium">Medium</option>
-          <option value="Hard">Hard</option>
-        </select>
+        <div className="relative">
+          <select
+            name="difficulty"
+            value={formData.difficulty}
+            onChange={handleChange}
+            className="input-field appearance-none"
+            disabled={loading}
+          >
+            <option value="">Let AI decide</option>
+            <option value="Easy">Easy</option>
+            <option value="Medium">Medium</option>
+            <option value="Hard">Hard</option>
+          </select>
+          <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-dark-400">
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </div>
+        </div>
       </div>
 
       <button
         type="submit"
         disabled={loading}
-        className="w-full btn-primary flex items-center justify-center gap-2"
+        className="w-full btn-primary group"
       >
         {loading ? (
           <>
@@ -288,7 +305,7 @@ export default function ProblemEntryForm({ onSuccess }) {
           </>
         ) : (
           <>
-            <Sparkles size={20} />
+            <Sparkles size={20} className="group-hover:rotate-12 transition-transform" />
             Save & Analyze with AI
           </>
         )}
@@ -299,9 +316,9 @@ export default function ProblemEntryForm({ onSuccess }) {
 
 function InfoCard({ label, value }) {
   return (
-    <div className="glass-card p-3 flex items-center justify-between">
-      <span className="text-sm text-gray-400">{label}</span>
-      <span className="font-semibold text-primary-400">{value}</span>
+    <div className="glass-card p-4 flex items-center justify-between group hover:border-dark-600 transition-colors">
+      <span className="text-sm text-dark-400 font-medium">{label}</span>
+      <span className="font-semibold text-primary-400 group-hover:text-primary-300 transition-colors">{value}</span>
     </div>
   );
 }

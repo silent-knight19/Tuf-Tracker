@@ -31,24 +31,24 @@ export default function LoginPage() {
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.5 }}
-        className="glass-card p-8 md:p-12 max-w-md w-full"
+        className="glass-card p-6 md:p-8 max-w-sm w-full"
       >
         {/* Logo & Title */}
-        <div className="text-center mb-8">
+        <div className="text-center mb-6">
           <motion.div
             initial={{ y: -20 }}
             animate={{ y: 0 }}
             transition={{ delay: 0.2 }}
-            className="flex items-center justify-center mb-4"
+            className="flex items-center justify-center mb-3"
           >
-            <div className="bg-gradient-to-br from-primary-500 to-purple-500 p-4 rounded-2xl">
-              <Brain className="w-12 h-12 text-white" />
+            <div className="bg-gradient-to-br from-primary-500 to-purple-500 p-3 rounded-xl">
+              <Brain className="w-8 h-8 text-white" />
             </div>
           </motion.div>
-          <h1 className="text-4xl font-bold bg-gradient-to-r from-primary-400 to-purple-400 bg-clip-text text-transparent mb-2">
+          <h1 className="text-2xl font-bold bg-gradient-to-r from-primary-400 to-purple-400 bg-clip-text text-transparent mb-1">
             Tuf-Tracker
           </h1>
-          <p className="text-gray-400">Your AI-Powered DSA Learning Companion</p>
+          <p className="text-sm text-gray-400">Your AI-Powered DSA Learning Companion</p>
         </div>
 
         {/* Features */}
@@ -56,11 +56,11 @@ export default function LoginPage() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3 }}
-          className="space-y-4 mb-8"
+          className="space-y-3 mb-6"
         >
-          <Feature icon={<Sparkles />} text="AI-powered problem categorization" />
-          <Feature icon={<TrendingUp />} text="Adaptive spaced repetition" />
-          <Feature icon={<Target />} text="Personalized weakness detection" />
+          <Feature icon={<Sparkles size={16} />} text="AI-powered problem categorization" />
+          <Feature icon={<TrendingUp size={16} />} text="Adaptive spaced repetition" />
+          <Feature icon={<Target size={16} />} text="Personalized weakness detection" />
         </motion.div>
 
         {/* Sign In Button */}
@@ -104,9 +104,9 @@ export default function LoginPage() {
 
 function Feature({ icon, text }) {
   return (
-    <div className="flex items-center gap-3 text-gray-300">
+    <div className="flex items-center gap-2 text-gray-300">
       <div className="text-primary-400">{icon}</div>
-      <p className="text-sm">{text}</p>
+      <p className="text-xs">{text}</p>
     </div>
   );
 }

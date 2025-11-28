@@ -1,0 +1,201 @@
+{
+    "Microsoft": {
+        "companyName": "Microsoft",
+        "overallReadiness": 0,
+        "requiredTopics": [
+            {
+                "name": "Arrays & Hash-based Arrays",
+                "importance": "critical",
+                "practiceList": [
+                    "Two Sum",
+                    "Product of Array Except Self",
+                    "Subarray Sum Equals K",
+                    "Best Time to Buy and Sell Stock",
+                    "Container With Most Water",
+                    "3Sum",
+                    "4Sum",
+                    "Move Zeroes",
+                    "Remove Duplicates from Sorted Array",
+                    "Sort Colors",
+                    "Remove Element",
+                    "Merge Intervals",
+                    "Search in Rotated Sorted Array",
+                    "Find First and Last Position of Element in Sorted Array",
+                    "Kth Largest Element in an Array",
+                    "Top K Frequent Elements",
+                    "Contains Duplicate (or variant)",
+                    "Majority Element",
+                    "Next Permutation",
+                    "Set Matrix Zeroes"
+                ]
+            },
+            {
+                "name": "Strings",
+                "importance": "critical",
+                "practiceList": [
+                    "Valid Parentheses",
+                    "Longest Substring Without Repeating Characters",
+                    "Minimum Window Substring",
+                    "Group Anagrams",
+                    "Valid Palindrome",
+                    "Longest Palindromic Substring",
+                    "String to Integer (atoi)",
+                    "Implement strStr()",
+                    "Add Binary",
+                    "Multiply Strings",
+                    "Reverse Words in a String",
+                    "Count and Say"
+                ]
+            },
+            {
+                "name": "Linked Lists",
+                "importance": "high",
+                "practiceList": [
+                    "Reverse Linked List",
+                    "Detect Cycle in Linked List",
+                    "Merge Two Sorted Lists",
+                    "Add Two Numbers (linked list representation)",
+                    "Remove Nth Node From End",
+                    "Copy List with Random Pointer",
+                    "Reorder List",
+                    "Linked List Cycle II",
+                    "Intersection of Two Linked Lists"
+                ]
+            },
+            {
+                "name": "Trees / Binary Trees / BST",
+                "importance": "high",
+                "practiceList": [
+                    "Validate Binary Search Tree",
+                    "Lowest Common Ancestor of a Binary Tree",
+                    "Symmetric Tree",
+                    "Binary Tree Level Order Traversal",
+                    "Serialize and Deserialize Binary Tree",
+                    "Flatten Binary Tree to Linked List",
+                    "Diameter of Binary Tree",
+                    "Binary Tree Maximum Path Sum",
+                    "Path Sum",
+                    "Count Complete Tree Nodes"
+                ]
+            },
+            {
+                "name": "Graphs & Grids",
+                "importance": "high",
+                "practiceList": [
+                    "Number of Islands",
+                    "Word Ladder",
+                    "Course Schedule",
+                    "Clone Graph",
+                    "01 Matrix",
+                    "Rotting Oranges",
+                    "Surrounded Regions",
+                    "Network Delay Time",
+                    "Word Search",
+                    "Minimum Number of Swipes / Shortest Path on Grid"
+                ]
+            },
+            {
+                "name": "Basic Dynamic Programming / Greedy / DP-Lite",
+                "importance": "medium",
+                "practiceList": [
+                    "Longest Increasing Subsequence",
+                    "Maximum Subarray (Kadane)",
+                    "House Robber",
+                    "Climbing Stairs",
+                    "Coin Change (1D)",
+                    "Decode Ways",
+                    "Unique Paths",
+                    "Jump Game",
+                    "Word Break",
+                    "Maximum Product Subarray"
+                ]
+            }
+        ],
+        "requiredPatterns": [
+            {
+                "name": "Two Pointers / Sliding Window / Hash-Map",
+                "importance": "critical",
+                "practiceList": [
+                    "Two Sum",
+                    "3Sum",
+                    "Container With Most Water",
+                    "Subarray Sum Equals K",
+                    "Longest Substring Without Repeating Characters",
+                    "Minimum Window Substring",
+                    "Valid Palindrome",
+                    "Sort Colors",
+                    "Remove Duplicates from Sorted Array",
+                    "Top K Frequent Elements",
+                    "Kth Largest Element in an Array"
+                ]
+            },
+            {
+                "name": "Hashing / Hash-Set / Hash-Map",
+                "importance": "critical",
+                "practiceList": [
+                    "Two Sum",
+                    "Top K Frequent Elements",
+                    "Contains Duplicate",
+                    "Subarray Sum Equals K",
+                    "Group Anagrams",
+                    "Valid Anagram / Permutation",
+                    "First Missing Positive",
+                    "Intersection of Arrays"
+                ]
+            },
+            {
+                "name": "Graph / Tree Traversal (BFS / DFS)",
+                "importance": "high",
+                "practiceList": [
+                    "Number of Islands",
+                    "Word Ladder",
+                    "Course Schedule",
+                    "Clone Graph",
+                    "01 Matrix",
+                    "Rott­ing Oranges",
+                    "Surrounded Regions",
+                    "Binary Tree Level Order Traversal",
+                    "Validate BST",
+                    "Lowest Common Ancestor"
+                ]
+            },
+            {
+                "name": "Sort / Search / Binary Search / Divide & Conquer",
+                "importance": "medium",
+                "practiceList": [
+                    "Search in Rotated Sorted Array",
+                    "Find First and Last Position of Element in Sorted Array",
+                    "Median of Two Sorted Arrays",
+                    "Kth Largest Element in an Array",
+                    "Peak Element / Find Peak",
+                    "Binary Search (classic)"
+                ]
+            },
+            {
+                "name": "Basic DP / Greedy / Subproblem-Divide",
+                "importance": "medium",
+                "practiceList": [
+                    "Longest Increasing Subsequence",
+                    "Maximum Subarray",
+                    "Climbing Stairs",
+                    "House Robber",
+                    "Coin Change (1D / 2D simplified)",
+                    "Jump Game",
+                    "Decode Ways"
+                ]
+            }
+        ],
+        "recommendations": [
+            "Prioritize mastering Two Pointers / Sliding Window + Hash-Map based problems — they cover a large fraction of array-/string-based questions at Microsoft.",
+            "Ensure solid grip on Hashing + Hash-Map / Set solutions — many variations use these under the hood.",
+            "Regularly practice BFS/DFS on trees, graphs and grids — these cover most non-array/string data-structure problems.",
+            "Get comfortable with basic DP/Greedy — even if less frequent, these appear occasionally as medium-hard questions."
+        ],
+        "nextSteps": [
+            "Complete the practiceList for essential patterns and topics (above).",
+            "Start mixing patterns: try hybrid problems (e.g. array + hash + sliding window, graph + BFS + DP, etc.)",
+            "Practice coding within 25–40 minutes, think aloud, and handle edge-cases / complexity constraints carefully.",
+            "Do 2–3 full mock interviews (20–30 min problem solving + white-boarding + communication) before real interview."
+        ]
+    }
+}

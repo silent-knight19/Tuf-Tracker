@@ -1,4 +1,5 @@
 import * as geminiService from '../services/geminiService.js';
+import * as companyService from '../services/companyService.js';
 
 /**
  * Analyze a new problem
@@ -142,3 +143,54 @@ export const createFlashcards = async (req, res) => {
     });
   }
 };
+
+/**
+ * Analyze company-specific readiness (with caching)
+ */
+export const getCompanyReadiness = async (req, res) => {
+  try {
+    const { companyName, userTopics, userPatterns } = req.body;
+
+    if (!companyName) {
+      return res.status(400).json({
+        success: false,
+        error: 'Company name is required',
+      });
+    }
+
+    if (!userTopics || !Array.isArray(userTopics)) {
+      return res.status(400).json({
+        success: false,
+        error: 'User topics array is required',
+      });
+    }
+
+    if (!userPatterns || !Array.isArray(userPatterns)) {
+      return res.status(400).json({
+        success: false,
+        error: 'User patterns array is required',
+      });
+    }
+
+    // Use companyService which handles caching automatically
+    const result = await companyService.getOrCreateCompanyRequirements(
+      companyName,
+      userTopics,
+      userPatterns
+    );
+
+    if (!result.success) {
+      return res.status(500).json(result);
+    }
+
+    res.json(result);
+  } catch (error) {
+    console.error('Error in getCompanyReadiness controller:', error);
+    res.status(500).json({
+      success: false,
+      error: error.message,
+    });
+  }
+};
+
+

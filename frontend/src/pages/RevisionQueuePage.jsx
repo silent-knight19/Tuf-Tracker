@@ -131,19 +131,19 @@ export default function RevisionQueuePage() {
   return (
     <div className="min-h-screen">
       <Navbar />
-      <div className="max-w-6xl mx-auto px-4 py-8">
+      <div className="max-w-6xl mx-auto px-4 py-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="mb-8"
+          className="mb-4"
         >
-          <div className="flex items-center gap-3 mb-2">
-            <div className="bg-gradient-to-br from-primary-500 to-purple-500 p-3 rounded-xl">
-              <Calendar className="w-6 h-6 text-white" />
+          <div className="flex items-center gap-2 mb-1">
+            <div className="bg-gradient-to-br from-primary-500 to-purple-500 p-2 rounded-lg">
+              <Calendar className="w-5 h-5 text-white" />
             </div>
-            <h1 className="text-3xl font-bold">Revision Queue</h1>
+            <h1 className="text-2xl font-bold">Revision Queue</h1>
           </div>
-          <p className="text-gray-400">Problems scheduled for revision</p>
+          <p className="text-sm text-gray-400">Problems scheduled for revision</p>
         </motion.div>
 
         <div className="space-y-8">
@@ -217,13 +217,13 @@ export default function RevisionQueuePage() {
 function Section({ title, icon, count, children }) {
   return (
     <div>
-      <div className="flex items-center gap-2 mb-4">
+      <div className="flex items-center gap-2 mb-2">
         {icon}
-        <h2 className="text-xl font-semibold">
+        <h2 className="text-lg font-semibold">
           {title} <span className="text-gray-500">({count})</span>
         </h2>
       </div>
-      <div className="space-y-3">{children}</div>
+      <div className="space-y-2">{children}</div>
     </div>
   );
 }
@@ -236,12 +236,12 @@ function ProblemCard({ problem, index, onRevise }) {
       initial={{ opacity: 0, x: -20 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ delay: index * 0.05 }}
-      className="glass-card p-4 hover:bg-white/10 transition-all"
+      className="glass-card p-3 hover:bg-white/10 transition-all"
     >
-      <div className="flex items-start justify-between gap-4">
+      <div className="flex items-start justify-between gap-3">
         <div className="flex-1">
-          <h3 className="font-semibold mb-2">{problem.title}</h3>
-          <div className="flex flex-wrap gap-2 mb-2">
+          <h3 className="font-medium mb-1 text-sm">{problem.title}</h3>
+          <div className="flex flex-wrap gap-1.5 mb-1.5">
             <Badge color="blue">{problem.topic}</Badge>
             <Badge color="purple">{problem.pattern}</Badge>
             <Badge color={getDifficultyColor(problem.difficulty)}>
@@ -249,16 +249,16 @@ function ProblemCard({ problem, index, onRevise }) {
             </Badge>
           </div>
           {problem.revisionHint && (
-            <p className="text-sm text-gray-400 mb-2">💡 {problem.revisionHint}</p>
+            <p className="text-xs text-gray-400 mb-1.5">💡 {problem.revisionHint}</p>
           )}
-          <div className="flex items-center gap-4 text-xs text-gray-500">
+          <div className="flex items-center gap-3 text-xs text-gray-500">
             <span>Revisions: {problem.revisionCount || 0}</span>
             <span>Next: {format(nextDate, 'MMM d, yyyy')}</span>
           </div>
         </div>
         <button
           onClick={onRevise}
-          className="btn-primary px-4 py-2 text-sm whitespace-nowrap"
+          className="btn-primary px-3 py-1.5 text-xs whitespace-nowrap"
         >
           Mark Revised
         </button>

@@ -3,10 +3,12 @@ import { AuthProvider } from './context/AuthContext';
 import { Toaster } from 'react-hot-toast';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import LoginPage from './components/auth/LoginPage';
-import DashboardPage from './pages/DashboardPage';
+import HomePage from './pages/HomePage';
 import AddProblemPage from './pages/AddProblemPage';
 import RevisionQueuePage from './pages/RevisionQueuePage';
 import AnalyticsPage from './pages/AnalyticsPage';
+import CalendarPage from './pages/CalendarPage';
+import ProgressPage from './pages/ProgressPage';
 
 function App() {
   return (
@@ -15,10 +17,26 @@ function App() {
         <Routes>
           <Route path="/login" element={<LoginPage />} />
           <Route
-            path="/dashboard"
+            path="/home"
             element={
               <ProtectedRoute>
-                <DashboardPage />
+                <HomePage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/progress"
+            element={
+              <ProtectedRoute>
+                <ProgressPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/calendar"
+            element={
+              <ProtectedRoute>
+                <CalendarPage />
               </ProtectedRoute>
             }
           />
@@ -46,8 +64,8 @@ function App() {
               </ProtectedRoute>
             }
           />
-          <Route path="/" element={<Navigate to="/dashboard" replace />} />
-          <Route path="*" element={<Navigate to="/dashboard" replace />} />
+          <Route path="/" element={<Navigate to="/home" replace />} />
+          <Route path="*" element={<Navigate to="/home" replace />} />
         </Routes>
       </BrowserRouter>
       

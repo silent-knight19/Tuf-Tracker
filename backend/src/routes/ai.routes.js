@@ -19,4 +19,7 @@ router.post('/analyze-weaknesses', aiController.analyzeWeakAreas);
 // Generate flashcards
 router.post('/generate-flashcards', aiController.createFlashcards);
 
+// Get company-specific readiness
+router.post('/company-readiness', aiController.getCompanyReadiness);
+
 export default router;
