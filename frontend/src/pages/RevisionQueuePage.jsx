@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { collection, query, where, getDocs, doc, updateDoc, serverTimestamp } from 'firebase/firestore';
-import { db } from '../../utils/firebaseConfig';
-import { useAuth } from '../../context/AuthContext';
+import { db } from '../utils/firebaseConfig';
+import { useAuth } from '../context/AuthContext';
 import Navbar from '../components/layout/Navbar';
 import { motion } from 'framer-motion';
 import { Calendar, Clock, CheckCircle, AlertCircle } from 'lucide-react';

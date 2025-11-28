@@ -5,8 +5,8 @@ dotenv.config();
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
-// Using Gemini Pro for text generation
-export const model = genAI.getGenerativeModel({ model: 'gemini-pro' });
+// Using Gemini 2.0 Flash for text generation
+export const model = genAI.getGenerativeModel({ model: 'gemini-2.0-flash' });
 
 // Configuration for AI generation
 export const generationConfig = {
